@@ -1,0 +1,23 @@
+<div id="app-booth">
+
+  <div class="voting">
+    <h1>[[ voting.id ]] - [[ voting.name ]]</h1>
+
+    <form *ngIf="!singup">
+      <label for="inputUsername">Username</label>
+      <input #username id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+      <label for="inputPassword">Password</label>
+      <input #password type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit"
+              (click)="onSubmit(username.value, password.value, $event)">
+        Sign in
+      </button>
+    </form>
+
+    <!-- Voting -->
+    <div *ngIf="singup">
+      <span>loged</span>
+    </div>
+  </div>
+</div>
