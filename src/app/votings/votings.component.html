@@ -18,6 +18,23 @@
     <!-- Voting -->
     <div *ngIf="singup">
       <span>loged</span>
+
+      <h2>[[ voting.question.desc ]]</h2>
+
+      <form>
+        <div *ngFor = "let option of options;let i=index">
+
+          <label for="option">{{option}}</label><br>
+          <input #option type="radio" id={{i}} name="option" value="option">
+
+        </div>
+          
+        <button class="btn btn-lg btn-primary btn-block" type="submit"
+                (click)="onSubmit(option.id, $event)">
+          Vote
+        </button>
+      </form>
+  
     </div>
   </div>
 </div>

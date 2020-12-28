@@ -11,10 +11,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class VotingsComponent implements OnInit {
   singup: boolean;
 
+  options:string[] = ["option","option"];
+
   constructor(private route: ActivatedRoute, private router: Router, private votingService: VotingService, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.singup = false;
+    this.singup = true;
     const id = +this.route.snapshot.params.id;
     console.log('Get voting stars');
     this.votingService.getVoting(id).subscribe((res) => {
