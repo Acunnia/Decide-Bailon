@@ -15,22 +15,22 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<object> {
+    const httpHeaders = new HttpHeaders({'Access-Control-Allow-Origin': 'http://localhost:8000'});
     if (username !== '' && password !== '') {
-      const headers = new HttpHeaders().set('Access-Control-Allow-Origin','http://localhost:8080/');
-      return this.http.post(`${environment.apiUrl}authentication/login/`, {
+      return this.http.post(`${environment.apiUrl}gateway/authentication/login/`, {
         username,
         password,
-      }, {headers});
+      }, {headers: httpHeaders});
     }
   }
 
   logout(): Observable<object> {
-    return this.http.post(`${environment.apiUrl}authentication/logout/`, {token: this.getToken()});
+    return this.http.post(`${environment.apiUrl}authentication/logout`, {token: this.getToken()});
   }
 
   getUser(token: string): Observable<object> {
     const data = {token};
-    return this.http.post(`${environment.apiUrl}authentication/getuser/`, data);
+    return this.http.post(`${environment.apiUrl}authentication/getuser`, data);
   }
 
   getToken(): string {
