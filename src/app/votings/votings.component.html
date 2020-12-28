@@ -1,40 +1,52 @@
-<div id="app-booth">
 
-  <div class="voting">
+<div id="app-booth" class="principal">
+
+  
     <h1>[[ voting.id ]] - [[ voting.name ]]</h1>
 
     <form *ngIf="!singup">
-      <label for="inputUsername">Username</label>
-      <input #username id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-      <label for="inputPassword">Password</label>
-      <input #password type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit"
-              (click)="onSubmit(username.value, password.value, $event)">
-        Sign in
-      </button>
+      <div class="form-group">
+        <label for="inputUsername" class="mr-sm-2" > Username : </label>
+        <input #username id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+      </div>
+
+      <div class="form-group">
+        <label for="inputPassword" class="mr-sm-2" > Password : </label>
+        <input #password type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      </div>
+
+      <div class="form-group">
+        <button class="button button-3" type="submit"
+                (click)="onSubmit(username.value, password.value, $event)">
+          Sign in
+        </button>
+    </div>
+
     </form>
 
     <!-- Voting -->
-    <div *ngIf="singup">
+    <div  *ngIf="singup">
       <span>loged</span>
 
       <h2>[[ voting.question.desc ]]</h2>
 
       <form>
-        <div *ngFor = "let option of options;let i=index">
+        <div class="form-check-inline" *ngFor = "let option of options;let i=index">
 
-          <label for="option">{{option}}</label><br>
-          <input #option type="radio" id={{i}} name="option" value="option">
+          <label for="option" class="form-check-label" >
+            {{option}}</label>
+          <input #option type="radio" class="form-check-input" id={{i}} name="option" value="option">
 
         </div>
-          
-        <button class="btn btn-lg btn-primary btn-block" type="submit"
-                (click)="onSubmit(option.id, $event)">
-          Vote
-        </button>
+        <div class="boton">
+          <button class="button button-3" type="submit"
+                  (click)="onSubmit(option.id, $event)">
+                  Vote
+          </button>
+        </div>
       </form>
   
     </div>
-  </div>
+
 </div>
