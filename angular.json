@@ -121,5 +121,8 @@
       }
     }
   },
-  "defaultProject": "cabinaBailon"
+  "defaultProject": "cabinaBailon",
+  "cli": {
+    "analytics": "f38a9146-b224-4925-bce5-0b8c0bfcb186"
+  }
 }

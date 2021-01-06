@@ -9,6 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class VotingService {
 
+  private headers = new HttpHeaders({'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'});
+
   constructor(private http: HttpClient) { }
 
   getVotingsByUserId(id: number): Observable<object> {
@@ -17,7 +20,7 @@ export class VotingService {
 
 
   getVoting(id: number): Observable<object> {
-    return this.http.get(`${environment.apiUrl}voting/?id=${id}`);
+    return this.http.get(`${environment.apiUrl}gateway/voting/?id=${id}`, {headers: this.headers});
   }
 
   postData(data: { vote: { a: any; b: any; }; voting: number; voter: number; token: string; }): Observable<object> {
