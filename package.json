@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node src/server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "heroku-postbuild": "ng build --prod",
-    "e2e": "ng e2e"
+    "postinstall": "ng build --prod",
+    "e2e": "ng e2e",
+    "lite": "lite-server"
   },
   "engines": {
     "node": "10.19.0",
