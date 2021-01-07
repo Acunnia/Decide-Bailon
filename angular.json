@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cabinaBailon",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -122,6 +123,6 @@
   },
   "defaultProject": "cabinaBailon",
   "cli": {
-    "analytics": "722567f2-1b3b-4777-ae77-695edf868910"
+    "analytics": "f38a9146-b224-4925-bce5-0b8c0bfcb186"
   }
 }

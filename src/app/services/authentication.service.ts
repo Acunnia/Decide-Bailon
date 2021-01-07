@@ -11,26 +11,28 @@ export class AuthenticationService {
   isLogged: boolean;
   statusChanged = new EventEmitter<boolean>();
 
+  private headers = new HttpHeaders({'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'});
+
   constructor(private http: HttpClient) {
   }
 
   login(username: string, password: string): Observable<object> {
     if (username !== '' && password !== '') {
-      const headers = new HttpHeaders().set('Access-Control-Allow-Origin','http://localhost:8080/');
-      return this.http.post(`${environment.apiUrl}authentication/login/`, {
+      return this.http.post<any>(`${environment.apiUrl}gateway/authentication/login`, {
         username,
         password,
-      }, {headers});
+      });
     }
   }
 
   logout(): Observable<object> {
-    return this.http.post(`${environment.apiUrl}authentication/logout/`, {token: this.getToken()});
+    return this.http.post(`${environment.apiUrl}authentication/logout`, {token: this.getToken()});
   }
 
   getUser(token: string): Observable<object> {
     const data = {token};
-    return this.http.post(`${environment.apiUrl}authentication/getuser/`, data);
+    return this.http.post(`${environment.apiUrl}authentication/getuser`, data);
   }
 
   getToken(): string {
